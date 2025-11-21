@@ -115,16 +115,16 @@ Large Language Models (LLMs) have demonstrated remarkable capabilities in code g
 \end{block}
 
 \begin{block}{Methodology}
-We evaluated 5 Qwen model variants (0.5B to 14B parameters) on 3,230 programming problems using a systematic prompt engineering framework.
+We evaluated 5 Qwen model variants (0.5B to 14B parameters) on 323 programming problems using a systematic prompt engineering framework.
 
 \textbf{Experimental Design}
 \begin{itemize}
-  \item \textbf{Base Instructions:} Concise vs. Verbose
-  \item \textbf{Reasoning Strategies:} Chain-of-Thought, Direct, Program-Aided
-  \item \textbf{Problem Decomposition:} None vs. Basic
-  \item \textbf{Output Formats:} Code only, Explanation + Code, Code + Explanation
-  \item \textbf{Total Configurations:} 36 prompt variants per model
-  \item \textbf{Dataset:} 116,280 total test cases
+  \item \textbf{Base Instructions:} Concise vs. Verbose (2 options)
+  \item \textbf{Reasoning Strategies:} Chain-of-Thought, Direct, Program-Aided (3 options)
+  \item \textbf{Problem Decomposition:} None vs. Basic (2 options)
+  \item \textbf{Output Formats:} Code only, Explanation + Code, Code + Explanation (3 options)
+  \item \textbf{Prompt Variations:} $2 \times 3 \times 2 \times 3 = 36$ unique configurations
+  \item \textbf{Total Solutions Generated:} $323 \text{ problems} \times 36 \text{ prompts} \times 5 \text{ models} = 58,140$ code generations
 \end{itemize}
 
 \begin{figure}
@@ -146,9 +146,9 @@ This effect was most pronounced in smaller models, suggesting that verbose instr
 % =================  Column 2 
 \begin{column}{\colwidth}
 
-\begin{block}{Results: Prompt Strategy Performance}
+\begin{block}{Results: Prompt Strategy Performance (averaged across all models)}
 
-\textbf{Top Performing Configurations}
+\textbf{Top 3 Configurations} 
 
 \begin{table}
 \centering
@@ -156,25 +156,34 @@ This effect was most pronounced in smaller models, suggesting that verbose instr
 \rowcolors{2}{lightblue!20}{white}
 \begin{tabular}{l l l l r}
 \toprule
-\textbf{Base} & \textbf{Reasoning} & \textbf{Decomp} & \textbf{Output} & \textbf{Acc \%} \\
+\textbf{Base} & \textbf{Reasoning} & \textbf{Decomp} & \textbf{Output}       & \textbf{Acc.} \\
 \midrule
-Concise & CoT      & None & Exp + Code & 32.07 \\
-Concise & Direct   & None & Code only  & 31.95 \\
-Concise & Direct   & None & Exp + Code & 31.83 \\
-Concise & CoT      & None & Code only  & 31.67 \\
-\midrule
-Verbose & CoT      & None & Code only  & 30.71 \\
-Verbose & Direct   & Basic & Code only & 30.19 \\
+Concise & Direct    & None  & Code only     & \textbf{33.10\%} \\
+Concise & Direct    & None  & Exp + Code    & 32.79\% \\
+Concise & CoT       & None  & Exp + Code    & 32.04\% \\
 \bottomrule
 \end{tabular}
-\caption{Accuracy of top prompt configurations (n=3,230 per config).}
 \end{table}
 
-\textbf{Biggest Performance Gaps}
-\begin{itemize}
-  \item Direct reasoning, no decomposition, code-only output: \textbf{+2.88\%}
-  \item Chain-of-Thought with explanation + code: \textbf{+2.26\%}
-\end{itemize}
+\textbf{Bottom 3 Configurations} \quad (all verbose!)
+
+\begin{table}
+\centering
+\small
+\rowcolors{2}{lightblue!20}{white}
+\begin{tabular}{l l l l r}
+\toprule
+\textbf{Base} & \textbf{Reasoning} & \textbf{Decomp} & \textbf{Output}       & \textbf{Acc.} \\
+\midrule
+Verbose & CoT       & Basic & Code + Exp    & 28.17\% \\
+Verbose & PAL       & Basic & Code + Exp    & 27.80\% \\
+Verbose & PAL       & Basic & Exp + Code    & 26.78\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{0.5em}
+\textit{Max gap: \textbf{+6.32\%} (best concise vs worst verbose)}
 
 \end{block}
 
@@ -185,7 +194,7 @@ Verbose & Direct   & Basic & Code only & 30.19 \\
 \caption{Accuracy comparison showing concise prompts consistently outperform verbose across all model sizes. The advantage diminishes as models grow larger.}
 \end{figure}
 
-Smaller models showed greater sensitivity to prompt verbosity, with relative improvements from \textbf{+21.0\%} (0.5B) to \textbf{+0.4\%} (14B).
+
 \end{block}
 
 \end{column}
@@ -195,7 +204,18 @@ Smaller models showed greater sensitivity to prompt verbosity, with relative imp
 \begin{column}{\colwidth}
 
 \begin{block}{Error and Hallucination Analysis}
-We categorized 28 distinct error types, revealing systematic failure patterns.
+We manually defined and annotated 28 distinct error types. Crucially, we observe:
+
+\vspace{0.5em}
+\textbf{Highly reproducible hallucination profiles:} Independent runs (v1 vs v2) produce nearly identical error distributions (overlapping solid/dashed lines).
+
+\textbf{Systematic shift with model scale:} Larger models dramatically reduce the dominant error mode while maintaining the same overall failure pattern.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth]{figures/hallucination_stability.pdf}
+\caption{\textbf{Hallucination profiles are remarkably stable across independent runs} (solid vs dashed lines nearly overlap) but \textbf{shift predictably with model size}.}
+\end{figure}
 
 \textbf{Most Common Error Types}
 \begin{itemize}
@@ -206,24 +226,9 @@ We categorized 28 distinct error types, revealing systematic failure patterns.
   \item \textbf{NameError} (2.8\%): Undefined variables
 \end{itemize}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.95\linewidth]{figures/hallucination_stability.pdf}
-\caption{Distribution of error types across model sizes. Logic deviations dominate but decrease with model capacity.}
-\end{figure}
 \end{block}
 
-\begin{block}{Token Usage Patterns}
-\begin{figure}
-\centering
-\includegraphics[width=0.95\linewidth]{figures/token_efficiency.pdf}
-\caption{Median token counts for correct vs. incorrect responses.}
-\end{figure}
-
-Correct solutions used 343–501 median tokens depending on model size. Logic deviation errors showed similar token usage, indicating verbosity alone is not predictive of correctness.
-\end{block}
-
-\begin{block}{Conclusions and Future Work}
+\begin{block}{Conclusions}
 
 \textbf{Key Takeaways}
 \begin{itemize}
@@ -231,14 +236,6 @@ Correct solutions used 343–501 median tokens depending on model size. Logic de
   \item Smaller models are more sensitive to prompt engineering
   \item Logic deviations are the dominant failure mode
   \item Reasoning strategy and output format significantly affect accuracy
-\end{itemize}
-
-\textbf{Future Directions}
-\begin{itemize}
-  \item Investigate optimal prompt length thresholds
-  \item Develop targeted mitigation for logic deviations
-  \item Extend to other model families and domains
-  \item Explore automated prompt optimization
 \end{itemize}
 
 \end{block}
