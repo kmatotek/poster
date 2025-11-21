@@ -115,7 +115,15 @@ Large Language Models (LLMs) have demonstrated remarkable capabilities in code g
 \end{block}
 
 \begin{block}{Methodology}
-We evaluated 5 Qwen model variants (0.5B to 14B parameters) on 323 programming problems using a systematic prompt engineering framework.
+We evaluated 5 Qwen2.5-Coder model variants (0.5B to 14B parameters) on 323 programming problems using a systematic prompt engineering framework.
+
+\textbf{Dataset}
+\begin{itemize}
+  \item \textbf{Source:} Kattis competitive programming platform
+  \item Used for rigorous competitions including ICPC
+  \item \textbf{Difficulty Range:} 0-2 (on 0-10 Kattis scale)
+  \item Focus on fundamental algorithmic challenges
+\end{itemize}
 
 \textbf{Experimental Design}
 \begin{itemize}
@@ -134,17 +142,17 @@ We evaluated 5 Qwen model variants (0.5B to 14B parameters) on 323 programming p
 \end{figure}
 \end{block}
 
-\begin{alertblock}{Key Finding: Conciseness Advantage}
-Across all 18 prompt configuration comparisons, \textbf{concise instructions outperformed verbose ones in 94.4\%} of cases with an average improvement of +1.35\%.
-
-This effect was most pronounced in smaller models, suggesting that verbose instructions may introduce noise that degrades performance.
-\end{alertblock}
-
 \end{column}
 \separatorcolumn
 
 % =================  Column 2 
 \begin{column}{\colwidth}
+
+\begin{alertblock}{Key Finding: Conciseness Advantage}
+Across all 18 prompt configuration comparisons, \textbf{concise instructions outperformed verbose ones in 94.4\%} of cases with an average improvement of +1.35\%.
+
+This effect was most pronounced in smaller models, suggesting that verbose instructions may introduce noise that degrades performance.
+\end{alertblock}
 
 \begin{block}{Results: Prompt Strategy Performance (averaged across all models)}
 
