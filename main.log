@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  21 NOV 2025 15:37
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  21 NOV 2025 16:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1021,8 +1021,8 @@ File: figures/wculogo.png Graphic file (type bmp)
 <figures/wculogo.png>
 File: figures/icon.png Graphic file (type bmp)
 <figures/icon.png>
-File: figures/token_efficiency.pdf Graphic file (type pdf)
-<use figures/token_efficiency.pdf>
+File: figures/SURI_Poster.pdf Graphic file (type pdf)
+<use figures/SURI_Poster.pdf>
 
 Underfull \hbox (badness 1681) in paragraph at lines 260--260
 []\TU/Lato(1)/m/n/24.88 Across all 18 prompt configuration comparisons, \TU/Lato(1)/b/n/24.88 concise instructions out-
@@ -1033,10 +1033,6 @@ File: figures/reasoning_strategy.pdf Graphic file (type pdf)
 File: figures/hallucination_stability.pdf Graphic file (type pdf)
 <use figures/hallucination_stability.pdf>
 (./main.bbl)
-Overfull \vbox (71.04546pt too high) detected at line 260
- []
-
-
 
 File: figures/wculogo.png Graphic file (type bmp)
 <figures/wculogo.png>
@@ -1069,8 +1065,8 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  38564 strings out of 473832
- 944978 string characters out of 5729482
- 1526586 words of memory out of 5000000
+ 944933 string characters out of 5729482
+ 1526554 words of memory out of 5000000
  60836 multiletter control sequences out of 15000+600000
  604176 words of font info for 143 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
