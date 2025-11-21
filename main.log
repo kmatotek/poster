@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  21 NOV 2025 15:32
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  21 NOV 2025 15:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -908,8 +908,8 @@ Package fontspec Info:
 \colwidth=\skip90
 File: figures/icon.png Graphic file (type bmp)
 <figures/icon.png>
-File: figures/icon.png Graphic file (type bmp)
-<figures/icon.png>
+File: figures/wculogo.png Graphic file (type bmp)
+<figures/wculogo.png>
  (./main.aux)
 \openout1 = `main.aux'.
 
@@ -989,8 +989,8 @@ Dictionary: translator-theorem-dictionary, Language: English
 Package pgfplots notification 'compat/show suggested version=true': you might benefit from \pgfplotsset{compat=1.18} (current compat level: 1.17).
 
 (./main.nav)
-File: figures/icon.png Graphic file (type bmp)
-<figures/icon.png>
+File: figures/wculogo.png Graphic file (type bmp)
+<figures/wculogo.png>
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 97.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1017,8 +1017,8 @@ LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <17.915> not available
 
 File: figures/icon.png Graphic file (type bmp)
 <figures/icon.png>
-File: figures/icon.png Graphic file (type bmp)
-<figures/icon.png>
+File: figures/wculogo.png Graphic file (type bmp)
+<figures/wculogo.png>
 File: figures/icon.png Graphic file (type bmp)
 <figures/icon.png>
 File: figures/token_efficiency.pdf Graphic file (type pdf)
@@ -1038,8 +1038,8 @@ Overfull \vbox (71.04546pt too high) detected at line 260
 
 
 
-File: figures/icon.png Graphic file (type bmp)
-<figures/icon.png>
+File: figures/wculogo.png Graphic file (type bmp)
+<figures/wculogo.png>
 File: figures/icon.png Graphic file (type bmp)
 <figures/icon.png>
 [1
@@ -1068,10 +1068,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 38555 strings out of 473832
- 944767 string characters out of 5729482
- 1526535 words of memory out of 5000000
- 60828 multiletter control sequences out of 15000+600000
+ 38564 strings out of 473832
+ 944978 string characters out of 5729482
+ 1526586 words of memory out of 5000000
+ 60836 multiletter control sequences out of 15000+600000
  604176 words of font info for 143 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,20n,123p,751b,985s stack positions out of 10000i,1000n,20000p,200000b,200000s
