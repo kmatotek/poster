@@ -1,4 +1,4 @@
-% UQ Gemini theme - clean version with your content only
+% UQ Gemini Poster - Custom Blue Theme (#093f81 + #d1e2f3)
 % Based on: https://github.com/alfurka/gemini-uq
 
 \documentclass[final]{beamer}
@@ -6,43 +6,72 @@
 % ====================
 % Packages
 % ====================
-
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[size=custom,width=100,height=75,scale=1.0]{beamerposter}
-\usetheme{gemini}
-\usecolortheme{uchicago}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
-\usepackage[table]{xcolor}  % needed for rowcolors in your table
+\usepackage[table]{xcolor}  % for \rowcolors
 
 % ====================
-% Lengths
+% Custom Blue Color Theme (replaces UChicago maroon)
 % ====================
+\definecolor{primaryblue}{HTML}{093f81}     % Deep blue - main accent
+\definecolor{lightblue}{HTML}{d1e2f3}       % Very light blue-gray - backgrounds
 
+\setbeamercolor{palette primary}{fg=black,bg=white}
+\setbeamercolor{palette secondary}{fg=black,bg=white}
+\setbeamercolor{palette tertiary}{bg=black,fg=white}
+\setbeamercolor{palette quaternary}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=primaryblue}
+
+% Headline (dark blue bar)
+\setbeamercolor{headline}{fg=white,bg=primaryblue}
+\setbeamercolor{headline rule}{bg=primaryblue!70!black}
+
+% Blocks
+\setbeamercolor{block title}{fg=primaryblue,bg=white}
+\setbeamercolor{block separator}{bg=primaryblue}
+\setbeamercolor{block body}{fg=black,bg=white}
+
+% Alert blocks (light blue background)
+\setbeamercolor{block alerted title}{fg=primaryblue,bg=lightblue}
+\setbeamercolor{block alerted separator}{bg=primaryblue}
+\setbeamercolor{block alerted body}{fg=black,bg=lightblue!80}
+
+% Items & headings
+\setbeamercolor{item}{fg=primaryblue}
+\setbeamercolor{heading}{fg=primaryblue}
+
+% Bibliography
+\setbeamercolor{bibliography item}{fg=primaryblue}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+
+% ====================
+% Load Gemini Theme (after color overrides)
+% ====================
+\usetheme{gemini}
+
+% ====================
+% Layout
+% ====================
 \newlength{\sepwidth}
 \newlength{\colwidth}
 \setlength{\sepwidth}{0.025\paperwidth}
 \setlength{\colwidth}{0.3\paperwidth}
-
 \newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
 
 % ====================
-% Title, Author, Institute
+% Your Content
 % ====================
-
 \title{The Impact of Prompt Engineering on Code Generation Accuracy and Hallucination Patterns in Language Models}
 
 \author{Kadin Matotek \inst{1} \and Linh B. Ngo \inst{1}}
-
 \institute[shortinst]{\inst{1} West Chester University, Department of Computer Science}
-
-% ====================
-% Footer
-% ====================
 
 \footercontent{
   Research conducted at WCU AIR Lab \hfill
@@ -50,19 +79,20 @@
   \href{mailto:km998744@wcupa.edu}{km998744@wcupa.edu}
 }
 
-% ====================
-% Logos (uncomment and adjust paths if you have logos)
-% ====================
-
+% Optional logos (adjust paths as needed)
 \logoright{\includegraphics[height=7cm]{figures/icon.png}}
 \logoleft{\includegraphics[height=7cm]{figures/icon.png}}
 
-% Optional: custom logo placement in header (kept from original template style)
-
-
-% ====================
-% Document
-% ====================
+% Custom logo overlay (uncomment if you prefer manual placement)
+% \addtobeamertemplate{headline}{}
+% {
+%     \begin{tikzpicture}[remember picture,overlay]
+%       \node[anchor=north west,inner sep=3cm] at ([xshift=0cm,yshift=1cm]current page.north west)
+%         {\includegraphics[height=5cm]{figures/icon.png}};
+%       \node[anchor=north east,inner sep=3cm] at ([xshift=0cm,yshift=2.5cm]current page.north east)
+%         {\includegraphics[height=8cm]{figures/icon.png}};
+%     \end{tikzpicture}
+% }
 
 \begin{document}
 
@@ -98,9 +128,9 @@ We evaluated 5 Qwen model variants (0.5B to 14B parameters) on 3,230 programming
 \end{itemize}
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/token_efficiency.png}
-  \caption{Experimental framework showing prompt construction pipeline and evaluation methodology.}
+\centering
+\includegraphics[width=0.95\linewidth]{figures/token_efficiency.pdf}
+\caption{Experimental framework showing prompt construction pipeline and evaluation methodology.}
 \end{figure}
 \end{block}
 
@@ -113,7 +143,7 @@ This effect was most pronounced in smaller models, suggesting that verbose instr
 \end{column}
 \separatorcolumn
 
-% ==================== Column 2 ====================
+% =================  Column 2 
 \begin{column}{\colwidth}
 
 \begin{block}{Results: Prompt Strategy Performance}
@@ -123,7 +153,7 @@ This effect was most pronounced in smaller models, suggesting that verbose instr
 \begin{table}
 \centering
 \small
-\rowcolors{2}{white!15!purple}{white}
+\rowcolors{2}{lightblue!20}{white}
 \begin{tabular}{l l l l r}
 \toprule
 \textbf{Base} & \textbf{Reasoning} & \textbf{Decomp} & \textbf{Output} & \textbf{Acc \%} \\
@@ -150,9 +180,9 @@ Verbose & Direct   & Basic & Code only & 30.19 \\
 
 \begin{block}{Model Size Effects}
 \begin{figure}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/reasoning_strategy.png}
-  \caption{Accuracy comparison showing concise prompts consistently outperform verbose across all model sizes. The advantage diminishes as models grow larger.}
+\centering
+\includegraphics[width=0.95\linewidth]{figures/reasoning_strategy.pdf}
+\caption{Accuracy comparison showing concise prompts consistently outperform verbose across all model sizes. The advantage diminishes as models grow larger.}
 \end{figure}
 
 Smaller models showed greater sensitivity to prompt verbosity, with relative improvements from \textbf{+21.0\%} (0.5B) to \textbf{+0.4\%} (14B).
@@ -177,17 +207,17 @@ We categorized 28 distinct error types, revealing systematic failure patterns.
 \end{itemize}
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/hallucination_stability.png}
-  \caption{Distribution of error types across model sizes. Logic deviations dominate but decrease with model capacity.}
+\centering
+\includegraphics[width=0.95\linewidth]{figures/hallucination_stability.pdf}
+\caption{Distribution of error types across model sizes. Logic deviations dominate but decrease with model capacity.}
 \end{figure}
 \end{block}
 
 \begin{block}{Token Usage Patterns}
 \begin{figure}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/token_efficiency.png}
-  \caption{Median token counts for correct vs. incorrect responses.}
+\centering
+\includegraphics[width=0.95\linewidth]{figures/token_efficiency.pdf}
+\caption{Median token counts for correct vs. incorrect responses.}
 \end{figure}
 
 Correct solutions used 343–501 median tokens depending on model size. Logic deviation errors showed similar token usage, indicating verbosity alone is not predictive of correctness.
