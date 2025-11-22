@@ -70,11 +70,12 @@
 % ====================
 \title{The Impact of Prompt Engineering on Code Generation Accuracy and Hallucination Patterns in Language Models}
 
-\author{Kadin Matotek \inst{1} \and Linh B. Ngo \inst{1}}
-\institute[shortinst]{\inst{1} West Chester University, Department of Computer Science}
+\author{Kadin Matotek \texorpdfstring{\\[0.3em] \normalsize Advisor: Dr. Linh B. Ngo}{, Advisor: Dr. Linh B. Ngo}}
+
+\institute[shortinst]{West Chester University, Department of Computer Science}
 
 \footercontent{
-  Research conducted at WCU AIR Lab \hfill
+  Research conducted at WCU-AIR Lab \hfill
   SICCS 2025 --- Poster Session \hfill
   \href{mailto:km998744@wcupa.edu}{km998744@wcupa.edu}
 }
@@ -137,8 +138,9 @@ We evaluated 5 Qwen2.5-Coder model variants (0.5B to 14B parameters) on 323 prog
 
 \begin{figure}
 \centering
-\includegraphics[width=0.95\linewidth]{figures/SURI_Poster.pdf}
-\caption{Experimental framework showing prompt construction pipeline and evaluation methodology.}
+\hspace{-2.0cm}
+\fcolorbox{lightblue}{white}{\includegraphics[width=1.05\linewidth]{figures/instructions.png}}
+\caption{Comparison of base instruction styles: verbose prompts (top) provide detailed explanations while concise prompts (bottom) use minimal, direct language.}
 \end{figure}
 \end{block}
 
@@ -161,11 +163,11 @@ This effect was most pronounced in smaller models, suggesting that verbose instr
 \begin{table}
 \centering
 \small
-\rowcolors{2}{lightblue!20}{white}
 \begin{tabular}{l l l l r}
 \toprule
 \textbf{Base} & \textbf{Reasoning} & \textbf{Decomp} & \textbf{Output}       & \textbf{Acc.} \\
 \midrule
+\rowcolor{lightblue!20}
 Concise & Direct    & None  & Code only     & \textbf{33.10\%} \\
 Concise & Direct    & None  & Exp + Code    & 32.79\% \\
 Concise & CoT       & None  & Exp + Code    & 32.04\% \\
@@ -173,25 +175,25 @@ Concise & CoT       & None  & Exp + Code    & 32.04\% \\
 \end{tabular}
 \end{table}
 
-\textbf{Bottom 3 Configurations} \quad (all verbose!)
+\textbf{Bottom 3 Configurations}
 
 \begin{table}
 \centering
 \small
-\rowcolors{2}{lightblue!20}{white}
 \begin{tabular}{l l l l r}
 \toprule
 \textbf{Base} & \textbf{Reasoning} & \textbf{Decomp} & \textbf{Output}       & \textbf{Acc.} \\
 \midrule
 Verbose & CoT       & Basic & Code + Exp    & 28.17\% \\
 Verbose & PAL       & Basic & Code + Exp    & 27.80\% \\
-Verbose & PAL       & Basic & Exp + Code    & 26.78\% \\
+\rowcolor{lightblue!20}
+Verbose & PAL       & Basic & Exp + Code    & \textbf{26.78\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \vspace{0.5em}
-\textit{Max gap: \textbf{+6.32\%} (best concise vs worst verbose)}
+\textit{Max gap: \textbf{+6.32\%}}
 
 \end{block}
 
