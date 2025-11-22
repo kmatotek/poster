@@ -76,7 +76,7 @@
 
 \footercontent{
   Research conducted at WCU-AIR Lab \hfill
-  SICCS 2025 --- Poster Session \hfill
+  CSM Dean's Office Student Research Poster Session 2025 \hfill
   \href{mailto:km998744@wcupa.edu}{km998744@wcupa.edu}
 }
 
@@ -197,13 +197,12 @@ Verbose & PAL       & Basic & Exp + Code    & \textbf{26.78\%} \\
 
 \end{block}
 
-\begin{block}{Model Size Effects}
+\begin{block}{Reasoning Strategy Comparison}
 \begin{figure}
 \centering
-\includegraphics[width=0.95\linewidth]{figures/reasoning_strategy.pdf}
-\caption{Accuracy comparison showing concise prompts consistently outperform verbose across all reasoning strategies.}
+\includegraphics[width=1\linewidth]{figures/reasoning_strategy.pdf}
+\caption{Concise prompts consistently outperform verbose across all reasoning strategies (Direct, Chain-of-Thought, and Program-Aided).}
 \end{figure}
-
 
 \end{block}
 
@@ -220,10 +219,9 @@ We manually defined and annotated 28 distinct error types. Crucially, we observe
 \textbf{Highly reproducible hallucination profiles:} Independent runs (v1 vs v2) produce nearly identical error distributions (overlapping solid/dashed lines).
 
 \textbf{Systematic shift with model scale:} Larger models dramatically reduce the dominant error mode while maintaining the same overall failure pattern.
-
 \begin{figure}
 \centering
-\includegraphics[width=0.95\linewidth]{figures/hallucination_stability.pdf}
+\includegraphics[width=1\linewidth]{figures/hallucination_stability.pdf}
 \caption{\textbf{Hallucination profiles are remarkably stable across independent runs} (solid vs dashed lines nearly overlap) but \textbf{shift predictably with model size}.}
 \end{figure}
 
