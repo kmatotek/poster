@@ -81,8 +81,14 @@
 }
 
 % Optional logos (adjust paths as needed)
-\logoright{\includegraphics[height=7cm]{figures/icon.png}}
 \logoleft{\includegraphics[height=7cm]{figures/wculogo.png}}
+\logoright{%
+  \begin{minipage}{14cm}
+    \centering
+    \includegraphics[height=7cm]{figures/icon.png}\\[2em]
+    {\Large\color{white}{WCU-AIR Lab}}
+  \end{minipage}%
+}
 
 % Custom logo overlay (uncomment if you prefer manual placement)
 % \addtobeamertemplate{headline}{}
