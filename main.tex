@@ -56,6 +56,8 @@
 % ====================
 \usetheme{gemini}
 
+
+
 % ====================
 % Layout
 % ====================
@@ -121,6 +123,8 @@ Large Language Models (LLMs) have demonstrated remarkable capabilities in code g
 \end{itemize}
 \end{block}
 
+\vspace{-1cm}
+
 \begin{block}{Methodology}
 We evaluated 5 Qwen2.5-Coder model variants (0.5B to 14B parameters) on 323 programming problems using a systematic prompt engineering framework.
 
@@ -140,6 +144,13 @@ We evaluated 5 Qwen2.5-Coder model variants (0.5B to 14B parameters) on 323 prog
   \item \textbf{Output Formats:} Code only, Explanation + Code, Code + Explanation (3 options)
   \item \textbf{Prompt Variations:} $2 \times 3 \times 2 \times 3 = 36$ unique configurations
   \item \textbf{Total Solutions Generated:} $323 \text{ problems} \times 36 \text{ prompts} \times 5 \text{ models} = 58,140$ code generations
+\end{itemize}
+
+\textbf{Evaluation Metrics}
+\begin{itemize}
+  \item \textbf{Accuracy:} Solutions passing all test cases
+  \item \textbf{Error Taxonomy:} 8 hallucination categories, 18 error types
+  \item \textbf{Reproducibility:} Dual independent runs
 \end{itemize}
 
 \begin{figure}
@@ -252,12 +263,19 @@ We manually defined and annotated 28 distinct error types. Crucially, we observe
   \item Reasoning strategy and output format significantly affect accuracy
 \end{itemize}
 
-\end{block}
+\textbf{Future Directions}
+\begin{itemize}
+  \item Extend evaluation to more complex problems (difficulty 3-10)
+  \item Test multilingual code generation across Python, Java, C++
+  \item Investigate few-shot prompting with example solutions
+  \item Develop automated prompt optimization frameworks
+\end{itemize}
 
-\begin{block}{References}
-\nocite{*}
-\small\bibliographystyle{plain}\bibliography{poster}
 \end{block}
+% \begin{block}{References}
+% \nocite{*}
+% \small\bibliographystyle{plain}\bibliography{poster}
+% \end{block}
 
 \end{column}
 \separatorcolumn
