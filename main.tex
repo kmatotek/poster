@@ -115,7 +115,7 @@
 \begin{block}{Introduction}
 Large Language Models (LLMs) have demonstrated remarkable capabilities in code generation, yet their reliability remains a critical concern. This study investigates how different prompt engineering strategies affect model accuracy and hallucination patterns across coding tasks.
 
-\textbf{Research Questions}
+\textbf{Research Questions:}
 \begin{itemize}
   \item How do concise versus verbose instructions impact code generation accuracy?
   \item What types of errors and hallucinations emerge across different model sizes?
@@ -173,7 +173,14 @@ We evaluated 5 Qwen2.5-Coder model variants (0.5B to 14B parameters) on 323 prog
 \begin{alertblock}{Key Finding: Conciseness Advantage}
 Across all 18 prompt configuration comparisons, \textbf{concise instructions outperformed verbose ones in 94.4\%} of cases with an average improvement of +1.35\%.
 
-This effect was most pronounced in smaller models, suggesting that verbose instructions may introduce noise that degrades performance.
+This effect was most pronounced in smaller models:
+\begin{itemize}
+  \item \textbf{0.5B model:} +21.0\% relative improvement
+  \item \textbf{1.5B, 3B models:} +8.2\% and +8.3\% improvement
+  \item \textbf{7B, 14B models:} +5.7\% and +0.4\% (gap narrows significantly)
+\end{itemize}
+
+This suggests verbose instructions introduce noise that smaller models struggle to filter, while larger models can better extract relevant information despite verbosity.
 \end{alertblock}
 
 \begin{block}{Results: Prompt Strategy Performance}
@@ -221,6 +228,7 @@ Verbose & PAL       & Basic & Exp + Code    & \textbf{26.78\%} \\
 \begin{figure}
 \centering
 \includegraphics[width=1\linewidth]{figures/reasoning_strategy.pdf}
+\vspace{-2cm}
 \caption{Concise prompts consistently outperform verbose across all reasoning strategies (Direct, Chain-of-Thought, and Program-Aided).}
 \end{figure}
 
@@ -245,7 +253,7 @@ We manually defined and annotated 28 distinct error types. Crucially, we observe
 \caption{\textbf{Hallucination profiles are remarkably stable across independent runs} (solid vs dashed lines nearly overlap) but \textbf{shift predictably with model size}.}
 \end{figure}
 
-\textbf{Most Common Error Types}
+\textbf{Most Common Error Types:}
 \begin{itemize}
   \item \textbf{Logic Deviation} (41.6\%): Incorrect algorithmic approach
   \item \textbf{ValueError} (12.9\%): Invalid input handling
@@ -258,7 +266,7 @@ We manually defined and annotated 28 distinct error types. Crucially, we observe
 
 \begin{block}{Conclusions}
 
-\textbf{Key Takeaways}
+\textbf{Key Takeaways:}
 \begin{itemize}
   \item Concise prompts consistently outperform verbose alternatives
   \item Smaller models are more sensitive to prompt engineering
@@ -266,7 +274,7 @@ We manually defined and annotated 28 distinct error types. Crucially, we observe
   \item Reasoning strategy and output format significantly affect accuracy
 \end{itemize}
 
-\textbf{Future Directions}
+\textbf{Future Directions:}
 \begin{itemize}
   \item Extend evaluation to more complex problems (difficulty 3-10)
   \item Test multilingual code generation across Python, Java, C++
